@@ -21,30 +21,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(root)/(home)/loading.js"
     ],
-    "/(root)/community/page": [
+    "/(auth)/sign-up/[[...sign-up]]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(root)/community/page.js"
+      "static/chunks/app/(auth)/sign-up/[[...sign-up]]/page.js"
     ],
-    "/(root)/community/loading": [
+    "/(auth)/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(root)/community/loading.js"
+      "static/chunks/app/(auth)/layout.js"
     ],
-    "/(root)/collection/page": [
+    "/(auth)/sign-in/[[...sign-in]]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(root)/collection/page.js"
-    ],
-    "/(root)/collection/loading": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(root)/collection/loading.js"
-    ],
-    "/not-found": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/not-found.js"
+      "static/chunks/app/(auth)/sign-in/[[...sign-in]]/page.js"
     ]
   }
 }
