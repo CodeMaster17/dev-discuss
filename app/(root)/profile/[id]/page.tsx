@@ -13,15 +13,15 @@ import Stats from '@/components/shared/Stats'
 import QuestionTab from '@/components/shared/QuestionTab'
 import AnswersTab from '@/components/shared/AnswersTab'
 
-const Page = async ({ params, searchParams}: URLProps) => {
+const Page = async ({ params, searchParams }: URLProps) => {
   const { userId: clerkId } = auth();
-  const userInfo = await getUserInfo({ userId: params.id})
+  const userInfo = await getUserInfo({ userId: params.id })
 
   return (
     <>
       <div className="flex flex-col-reverse items-start justify-between sm:flex-row">
         <div className="flex flex-col items-start gap-4 lg:flex-row">
-          <Image 
+          <Image
             src={userInfo?.user.picture}
             alt="profile picture"
             width={140}
@@ -35,7 +35,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
 
             <div className="mt-5 flex flex-wrap items-center justify-start gap-5">
               {userInfo.user.portfolioWebsite && (
-                <ProfileLink 
+                <ProfileLink
                   imgUrl="/assets/icons/link.svg"
                   href={userInfo.user.portfolioWebsite}
                   title="Portfolio"
@@ -43,16 +43,16 @@ const Page = async ({ params, searchParams}: URLProps) => {
               )}
 
               {userInfo.user.location && (
-                <ProfileLink 
+                <ProfileLink
                   imgUrl="/assets/icons/location.svg"
                   title={userInfo.user.location}
                 />
               )}
 
-                <ProfileLink 
-                  imgUrl="/assets/icons/calendar.svg"
-                  title={getJoinedDate(userInfo.user.joinedAt)}
-                />
+              <ProfileLink
+                imgUrl="/assets/icons/calendar.svg"
+                title={getJoinedDate(userInfo.user.joinedAt)}
+              />
             </div>
 
             {userInfo.user.bio && (
@@ -75,7 +75,7 @@ const Page = async ({ params, searchParams}: URLProps) => {
           </SignedIn>
         </div>
       </div>
-      
+
       <Stats
         reputation={userInfo.reputation}
         totalQuestions={userInfo.totalQuestions}
@@ -90,14 +90,14 @@ const Page = async ({ params, searchParams}: URLProps) => {
             <TabsTrigger value="answers" className="tab">Answers</TabsTrigger>
           </TabsList>
           <TabsContent value="top-posts" className="mt-5 flex w-full flex-col gap-6">
-            <QuestionTab 
+            <QuestionTab
               searchParams={searchParams}
               userId={userInfo.user._id}
               clerkId={clerkId}
             />
           </TabsContent>
           <TabsContent value="answers" className="flex w-full flex-col gap-6">
-            <AnswersTab 
+            <AnswersTab
               searchParams={searchParams}
               userId={userInfo.user._id}
               clerkId={clerkId}

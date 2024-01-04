@@ -1,4 +1,19 @@
 {
+  "/_not-found": "app/_not-found.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/(root)/(home)/page": "app/(root)/(home)/page.js"
+  "/api/webhook/route": "app/api/webhook/route.js",
+  "/api/chatgpt/route": "app/api/chatgpt/route.js",
+  "/(root)/ask-question/page": "app/(root)/ask-question/page.js",
+  "/(root)/jobs/page": "app/(root)/jobs/page.js",
+  "/(root)/collection/page": "app/(root)/collection/page.js",
+  "/(root)/tags/page": "app/(root)/tags/page.js",
+  "/(root)/community/page": "app/(root)/community/page.js",
+  "/(root)/(home)/page": "app/(root)/(home)/page.js",
+  "/(auth)/sign-up/[[...sign-up]]/page": "app/(auth)/sign-up/[[...sign-up]]/page.js",
+  "/(root)/profile/[id]/page": "app/(root)/profile/[id]/page.js",
+  "/(root)/tags/[id]/page": "app/(root)/tags/[id]/page.js",
+  "/(root)/question/[id]/page": "app/(root)/question/[id]/page.js",
+  "/(auth)/sign-in/[[...sign-in]]/page": "app/(auth)/sign-in/[[...sign-in]]/page.js",
+  "/(root)/profile/edit/page": "app/(root)/profile/edit/page.js",
+  "/(root)/question/edit/[id]/page": "app/(root)/question/edit/[id]/page.js"
 }

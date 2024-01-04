@@ -23,7 +23,7 @@ const Metric = ({
 }: MetricProps) => {
   const metricContent = (
     <>
-      <Image 
+      <Image
         src={imgUrl}
         width={16}
         height={16}
@@ -34,17 +34,17 @@ const Metric = ({
       <p className={`${textStyles} flex items-center gap-1`}>
         {value}
 
-        <span className={`small-regular line-clamp-1 ${isAuthor ?'max-sm:hidden' : ''}`}>
+        <span className={`small-regular line-clamp-1 ${isAuthor ? 'max-sm:hidden' : ''}`}>
           {title}
         </span>
       </p>
     </>
   )
 
-  if(href) {
+  if (href) {
     return (
       <Link href={href} className="flex-center  gap-1">
-        {metricContent}
+        {metricContent} Hello
       </Link>
     )
   }
