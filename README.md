@@ -1,6 +1,6 @@
 # DevDiscuss
 
-### A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web development, mobile app development, algorithms, data structures, and more.
+#### A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web development, mobile app development, algorithms, data structures, and more.
 
 ![DevDiscuss](https://github.com/CodeMaster17/dev-discuss/assets/96763776/72dc6521-8285-4d07-8b42-84c25d34b547)
 
