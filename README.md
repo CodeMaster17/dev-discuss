@@ -6,18 +6,32 @@
 
 ## Features
 
-🔒 Authentication with Clerk
-❓ Ask questions
-📝 Answer questions
-⬆️ Upvote/Downvote questions and answers system
-🔍 Global Search feature
-𐄳 Filter questions by topic
-🫵🏻 View user profiles
-⚡️ View user activity
-📝 View user stats
-📝 View user badges
-📝 View user questions
-📝 View user answers
-📝 View user upvotes
-📝 View user downvotes
-✨ Generate AI answers
+##### 🔒 Authentication with Clerk
+
+##### ❓ Ask questions
+
+##### 📝 Answer questions
+
+##### ⬆️ Upvote/Downvote questions and answers system
+
+##### 🔍 Global Search feature
+
+##### 𐄳 Filter questions by topic
+
+##### 🫵🏻 View user profiles
+
+##### ⚡️ View user activity
+
+##### 📝 View user stats
+
+##### 📝 View user badges
+
+##### 📝 View user questions
+
+##### 📝 View user answers
+
+##### 📝 View user upvotes
+
+##### 📝 View user downvotes
+
+##### ✨ Generate AI answers
