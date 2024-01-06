@@ -1,107 +1,139 @@
-import QuestionCard from "@/components/cards/QuestionCard";
-import HomeFilters from "@/components/home/HomeFilters";
-import Filter from "@/components/shared/Filter";
-import NoResult from "@/components/shared/NoResult";
-import Pagination from "@/components/shared/Pagination";
-import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
-import { Button } from "@/components/ui/button";
-import { HomePageFilters } from "@/constants/filters";
-import { getQuestions, getRecommendedQuestions } from "@/lib/actions/question.action";
-import { SearchParamsProps } from "@/types";
-import Link from "next/link";
+import { Button } from '@/components/ui/button'
+import { HOME_PAGE } from '@/constants/home-page'
+import Image from 'next/image'
+import React from 'react'
+import { SignOutButton, SignedIn, SignedOut, useAuth } from '@clerk/nextjs';
+import Link from 'next/link';
 
-import type { Metadata } from 'next';
-import { auth } from "@clerk/nextjs";
-
-export const metadata: Metadata = {
-  title: 'Home | Dev Overflow',
-}
-
-export default async function Home({ searchParams }: SearchParamsProps) {
-  const { userId } = auth();
-
-  let result;
-
-  if(searchParams?.filter === 'recommended') {
-    if(userId) {
-      result = await getRecommendedQuestions({
-        userId,
-        searchQuery: searchParams.q,
-        page: searchParams.page ? +searchParams.page : 1,
-      }); 
-    } else {
-      result = {
-        questions: [],
-        isNext: false,
-      }
-    }
-  } else {
-    result = await getQuestions({
-      searchQuery: searchParams.q,
-      filter: searchParams.filter,
-      page: searchParams.page ? +searchParams.page : 1,
-    }); 
-  }
-  
-
+const HomePage = () => {
   return (
     <>
-      <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
-        <h1 className="h1-bold text-dark100_light900">All Questions</h1> 
+      <div className='w-full h-screen  bg-primary-100 relative overflow-hidden'>
+        <div className='w-full flex flex-row h-full container '>
 
-        <Link href="/ask-question" className="flex justify-end max-sm:w-full">
-          <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
-            Ask a Question
-          </Button>
-        </Link> 
-      </div> 
+          <div className='w-[70%] border-2 h-full flex flex-col items-start justify-center -mt-24'>
+            <div className='border-2'>
 
-      <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
-        <LocalSearchbar 
-          route="/"
-          iconPosition="left"
-          imgSrc="/assets/icons/search.svg"
-          placeholder="Search for questions"
-          otherClasses="flex-1"
-        />
+              <span className='text-4xl font-spaceGrotesk font-bold'>Hi, There!!</span>
+              <br />
+              <br />
+              <br />
 
-        <Filter
-          filters={HomePageFilters}
-          otherClasses="min-h-[56px] sm:min-w-[170px]"
-          containerClasses="hidden max-md:flex"
-        />
+              <p className='text-7xl font-spaceGrotesk font-bold '>We are</p>
+              <p className='text-7xl font-spaceGrotesk font-bold '>building a </p>
+              <p className='text-7xl font-spaceGrotesk font-bold '>tech community</p>
+              <p className='text-7xl font-spaceGrotesk font-bold '> for
+                <span className='text-primary-500'>
+                  &nbsp;
+                  developers
+                </span>
+
+              </p>
+            </div>
+            <br />
+            <br />
+            <SignedOut>
+              <div>
+                <Link href="/sign-in">
+                  <Button className="bg-primary-500 text-white">
+                    <Image
+                      src="/assets/icons/account.svg"
+                      alt="login"
+                      width={20}
+                      height={20}
+                      className="invert-colors lg:hidden"
+                    />
+                    <span className="text-white max-lg:hidden">Ask your first question</span>
+                  </Button>
+                </Link>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <Link href="/sign-in">
+                  <Button className="bg-primary-500 text-white">
+                    <Image
+                      src="/assets/icons/account.svg"
+                      alt="login"
+                      width={20}
+                      height={20}
+                      className="invert-colors lg:hidden"
+                    />
+                    <span className="text-white max-lg:hidden">Log In</span>
+                  </Button>
+                </Link>
+              </div>
+            </SignedOut>
+
+            <SignedIn>
+              <div>
+                <Link href="/question-dashboard">
+                  <Button className="bg-primary-500 text-white">
+                    <Image
+                      src="/assets/icons/account.svg"
+                      alt="login"
+                      width={20}
+                      height={20}
+                      className="invert-colors lg:hidden"
+                    />
+                    <span className="text-white max-lg:hidden">Go to your question dashboard</span>
+                  </Button>
+
+                  &nbsp;
+                  &nbsp;
+                  &nbsp;
+                  <SignOutButton>
+                    <Button className="bg-white text-primary-500">
+                      <Image
+                        src="/assets/icons/account.svg"
+                        alt="login"
+                        width={20}
+                        height={20}
+                        className="invert-colors lg:hidden"
+                      />
+                      <span className="text-primary-500 max-lg:hidden">Sign out</span>
+                    </Button>
+                  </SignOutButton>
+                </Link>
+
+              </div>
+            </SignedIn>
+
+
+
+          </div>
+          <div className='top-0 lg:w-[40%] absolute right-0 h-full'>
+            <Image src='/assets/home-page/people.png' alt='hero' className='w-full h-full' width={500} height={500} />
+          </div>
+        </div>
+
+        {/* cards */}
+        <div className='w-[70vw] h-[25vh] gap-10 p-4 flex bg-white absolute bottom-0 border-2 border-red-500'>
+          {HOME_PAGE.map((item, index) => {
+            return (
+              <div key={item.id} className="flex lg:w-[20vw] flex-col justify-center items-center border-2">
+                <div className=" w-full">
+                  <div className="h-full flex flex-col items-center text-center">
+                    <Image
+                      alt="team"
+                      className=" rounded-lg w-[60px] h-[60px] border-2 "
+                      src={item.img}
+                      width={250}
+                      height={250}
+                    />
+                    <div className="w-full">
+                      <h2 className="title-font font-medium text-lg text-gray-900">{item.title}</h2>
+                      <p className="">{item.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </div>
-
-      <HomeFilters />
-
-      <div className="mt-10 flex w-full flex-col gap-6">
-        {result.questions.length > 0 ?
-          result.questions.map((question) => (
-            <QuestionCard 
-              key={question._id}
-              _id={question._id}
-              title={question.title}
-              tags={question.tags}
-              author={question.author}
-              upvotes={question.upvotes}
-              views={question.views}
-              answers={question.answers}
-              createdAt={question.createdAt}
-            />
-          ))
-          : <NoResult 
-            title="There’s no question to show"
-            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the discussion. our query could be the next big thing others learn from. Get involved! 💡"
-            link="/ask-question"
-            linkTitle="Ask a Question"
-          />}
-      </div>
-      <div className="mt-10">
-        <Pagination 
-          pageNumber={searchParams?.page ? +searchParams.page : 1}
-          isNext={result.isNext}
-        />
-      </div>
+      Hello
     </>
   )
 }
+
+export default HomePage
