@@ -31,7 +31,7 @@ const LocalSearchbar = ({
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      if(search) {
+      if (search) {
         const newUrl = formUrlQuery({
           params: searchParams.toString(),
           key: 'q',
@@ -40,8 +40,8 @@ const LocalSearchbar = ({
 
         router.push(newUrl, { scroll: false });
       } else {
-        console.log(route, pathname)
-        if(pathname === route) {
+        // console.log(route, pathname)
+        if (pathname === route) {
           const newUrl = removeKeysFromQuery({
             params: searchParams.toString(),
             keysToRemove: ['q']
@@ -52,14 +52,14 @@ const LocalSearchbar = ({
 
       }
     }, 300);
-    
+
     return () => clearTimeout(delayDebounceFn)
   }, [search, route, pathname, router, searchParams, query])
 
   return (
     <div className={`background-light800_darkgradient flex min-h-[56px] grow items-center gap-4 rounded-[10px] px-4 ${otherClasses}`}>
       {iconPosition === 'left' && (
-        <Image 
+        <Image
           src={imgSrc}
           alt="search icon"
           width={24}
@@ -77,7 +77,7 @@ const LocalSearchbar = ({
       />
 
       {iconPosition === 'right' && (
-        <Image 
+        <Image
           src={imgSrc}
           alt="search icon"
           width={24}

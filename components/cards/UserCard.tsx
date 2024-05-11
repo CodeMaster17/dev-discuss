@@ -1,8 +1,6 @@
 import { getTopInteractedTags } from "@/lib/actions/tag.actions";
 import Image from "next/image";
 import Link from "next/link";
-import { Badge } from "../ui/badge";
-import RenderTag from "../shared/RenderTag";
 
 interface Props {
   user: {
@@ -16,11 +14,10 @@ interface Props {
 
 const UserCard = async ({ user }: Props) => {
   const interactedTags = await getTopInteractedTags({ userId: user._id })
-
   return (
-    <Link href={`/profile/${user.clerkId}`} className="shadow-light100_darknone w-full max-xs:min-w-full xs:w-[260px]">
-      <article className="background-light900_dark200 light-border flex w-full flex-col items-center justify-center rounded-2xl border p-8">
-        <Image 
+    <Link href={`/profile/guest/${user.clerkId}`} className="shadow-light100_darknone w-full max-xs:min-w-full xs:w-[230px] lg:w-[190px] xl:w-[230px]">
+      <article className="background-light900_dark200 light-border flex w-full flex-col items-center justify-center rounded-2xl border p-7">
+        <Image
           src={user.picture}
           alt="user profile picture"
           width={100}
@@ -35,23 +32,23 @@ const UserCard = async ({ user }: Props) => {
           <p className="body-regular text-dark500_light500 mt-2">@{user.username}</p>
         </div>
 
-        <div className="mt-5">
+        {/* <div className="mt-5">
           {interactedTags.length > 0 ? (
             <div className="flex items-center gap-2">
-                {interactedTags.map((tag) => (
-                  <RenderTag 
-                   key={tag._id}
-                   _id={tag._id}
-                   name={tag.name}
-                  />
-                ))}
+              {interactedTags.map((tag) => (
+                <RenderTag
+                  key={tag._id}
+                  _id={tag._id}
+                  name={tag.name}
+                />
+              ))}
             </div>
           ) : (
             <Badge>
               No tags yet
             </Badge>
           )}
-        </div>
+        </div> */}
       </article>
     </Link>
   )

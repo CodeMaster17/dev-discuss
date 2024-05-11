@@ -251,10 +251,10 @@ export async function getUserInfo(params: GetUserByIdParams) {
     await connectToDatabase();
 
     const { userId } = params;
-    console.log("userId", userId);
-    const user = await User.findOne({ userId });
+    console.log("userId in server", userId);
+    const user = await User.findOne({ clerkId: userId });
 
-    console.log(user);
+    console.log("User in server", user);
 
     if (!user) {
       console.log("Error at get user info");
