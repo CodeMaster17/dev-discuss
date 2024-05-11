@@ -9,8 +9,13 @@ export const themes = [
 export const sidebarLinks: SidebarLink[] = [
   {
     imgURL: "/assets/icons/home.svg",
-    route: "/question-dashboard",
+    route: "/",
     label: "Home",
+  },
+  {
+    imgURL: "/assets/icons/home.svg",
+    route: "/question-dashboard",
+    label: "Dashbaord",
   },
   {
     imgURL: "/assets/icons/users.svg",

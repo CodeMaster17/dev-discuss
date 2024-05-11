@@ -11,9 +11,9 @@ import HomePage from './(home)/page'
 const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
-    <main className="">
+    <>
       {children}
-    </main>
+    </>
   )
 
 

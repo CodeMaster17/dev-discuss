@@ -1,14 +1,4 @@
 
-import Footer from '@/sections/home.page/footer.section';
-import Service from '@/sections/home.page/services.section';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import { Volume1 } from 'lucide-react';
-const HeroSection = () => {
-  return (
-    <>
-
       <div className="bg-white h-screen font-inter flex flex-col items-center justify-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
@@ -19,7 +9,7 @@ const HeroSection = () => {
                     <Volume1 color='#FF7000' />
                     Welcome
                   </span>
-                  <span >Ask your first doubt</span>
+                  <Link href="/ask-question">Ask your first doubt</Link>
                   {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
                     <path d="M5 12h14"></path>
                     <path d="m12 5 7 7-7 7"></path>
@@ -93,14 +83,14 @@ const HeroSection = () => {
               <div className="mt-12 flex justify-center space-x-3">
                 <div className="mt-12 flex justify-center space-x-3">
                   <span className="relative flex h-14 w-14 shrink-0 overflow-hidden rounded-full">
-                    <Image
+                    {/* <Image
                       className="aspect-square h-full w-full" alt="User 1"
                       width={20}
                       height={20}
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;width=40" />
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;width=40" /> */}
                   </span>
-                  <span
-                    className="relative flex h-14 w-14 shrink-0 overflow-hidden rounded-full"><img
+                  {/* <span
+                        className="relative flex h-14 w-14 shrink-0 overflow-hidden rounded-full"><img
                       className="aspect-square h-full w-full" alt="User 2"
                       src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;width=40" /></span><span
                         className="relative flex h-14 w-14 shrink-0 overflow-hidden rounded-full"><img
@@ -111,17 +101,10 @@ const HeroSection = () => {
                       src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=1889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;width=40" /></span>
                   <img className="relative flex h-14 w-14 shrink-0 overflow-hidden rounded-full"
                     src="https://images.unsplash.com/photo-1527718641255-324f8e2d0421?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="5" />
+                    alt="5" /> */}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Service />
-      <Footer />
-    </>
-  );
-};
-
-export default HeroSection;
