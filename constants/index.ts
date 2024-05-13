@@ -13,6 +13,11 @@ export const sidebarLinks: SidebarLink[] = [
     label: "Home",
   },
   {
+    imgURL: "/assets/icons/home.svg",
+    route: "/question-dashboard",
+    label: "Dashbaord",
+  },
+  {
     imgURL: "/assets/icons/users.svg",
     route: "/community",
     label: "Community",

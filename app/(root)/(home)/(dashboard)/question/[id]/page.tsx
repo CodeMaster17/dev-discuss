@@ -21,7 +21,6 @@ const Page = async ({ params, searchParams }: any) => {
 
   if (clerkId) {
     mongoUser = await getUserById({ userId: clerkId })
-    console.log("mongo user", mongoUser)
   } else {
     redirect('/sign-up')
   }
