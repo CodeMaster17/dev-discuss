@@ -6,23 +6,28 @@ import Pagination from "@/components/shared/Pagination";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
-import { getQuestions, getRecommendedQuestions } from "@/lib/actions/question.action";
+import {
+  getQuestions,
+  getRecommendedQuestions,
+} from "@/lib/actions/question.action";
 import { SearchParamsProps } from "@/types";
 import Link from "next/link";
 
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 import { auth } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
-  title: 'Question Dashboard',
-}
+  title: "Question Dashboard",
+};
 
-export default async function QuestionDashboard({ searchParams }: SearchParamsProps) {
+export default async function QuestionDashboard({
+  searchParams,
+}: SearchParamsProps) {
   const { userId } = auth();
 
   let result;
 
-  if (searchParams?.filter === 'recommended') {
+  if (searchParams?.filter === "recommended") {
     if (userId) {
       result = await getRecommendedQuestions({
         userId,
@@ -33,7 +38,7 @@ export default async function QuestionDashboard({ searchParams }: SearchParamsPr
       result = {
         questions: [],
         isNext: false,
-      }
+      };
     }
   } else {
     result = await getQuestions({
@@ -42,7 +47,6 @@ export default async function QuestionDashboard({ searchParams }: SearchParamsPr
       page: searchParams.page ? +searchParams.page : 1,
     });
   }
-
 
   return (
     <>
@@ -75,26 +79,30 @@ export default async function QuestionDashboard({ searchParams }: SearchParamsPr
       <HomeFilters />
 
       <div className="mt-10 flex w-full flex-col gap-6">
-        {result.questions.length > 0 ?
-          result.questions.map((question) => (
-            <QuestionCard
-              key={question._id}
-              _id={question._id}
-              title={question.title}
-              tags={question.tags}
-              author={question.author}
-              upvotes={question.upvotes}
-              views={question.views}
-              answers={question.answers}
-              createdAt={question.createdAt}
-            />
-          ))
-          : <NoResult
+        {result.questions.length > 0 ? (
+          result.questions
+            .reverse()
+            .map((question) => (
+              <QuestionCard
+                key={question._id}
+                _id={question._id}
+                title={question.title}
+                tags={question.tags}
+                author={question.author}
+                upvotes={question.upvotes}
+                views={question.views}
+                answers={question.answers}
+                createdAt={question.createdAt}
+              />
+            ))
+        ) : (
+          <NoResult
             title="There’s no question to show"
             description="Be the first to break the silence! 🚀 Ask a Question and kickstart the discussion. our query could be the next big thing others learn from. Get involved! 💡"
             link="/ask-question"
             linkTitle="Ask a Question"
-          />}
+          />
+        )}
       </div>
       <div className="mt-10">
         <Pagination
@@ -103,5 +111,5 @@ export default async function QuestionDashboard({ searchParams }: SearchParamsPr
         />
       </div>
     </>
-  )
+  );
 }

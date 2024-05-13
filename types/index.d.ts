@@ -4,6 +4,7 @@ export interface SidebarLink {
   imgURL: string;
   route: string;
   label: string;
+  imgURLDark?: string;
 }
 export interface ServicesCardLink {
   id: number;
@@ -11,7 +12,6 @@ export interface ServicesCardLink {
   route: string;
   label: string;
 }
-
 
 export interface Job {
   id?: string;

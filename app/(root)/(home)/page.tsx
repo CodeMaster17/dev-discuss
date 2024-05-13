@@ -1,92 +1,152 @@
-
-import Footer from '@/sections/home.page/footer.section';
-import Service from '@/sections/home.page/services.section';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import { Volume1 } from 'lucide-react';
+import Footer from "@/sections/home.page/footer.section";
+import Service from "@/sections/home.page/services.section";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { Volume1, Terminal } from "lucide-react";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 const HeroSection = () => {
   return (
     <>
-
-      <div className="bg-white h-screen font-inter flex flex-col items-center justify-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Alert className=" absolute inset-x-[50%] top-5 w-3/5 translate-x-[-50%] bg-primary-100 ">
+        <Terminal className="h-4 w-4" />
+        <AlertTitle>Don&apos;t want to sign up?</AlertTitle>
+        <AlertDescription className="flex items-center justify-between">
+          You can add components and dependencies to your app using the cli.
+          <Link href="/question-dashboard">
+            <Button className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
+              <Image
+                src="/assets/icons/sign-up.svg"
+                alt="sign up"
+                width={20}
+                height={20}
+                className="invert-colors lg:hidden"
+              />
+              <span className="primary-text-gradient max-lg:hidden">
+                View as guest
+              </span>
+            </Button>
+          </Link>
+        </AlertDescription>
+      </Alert>
+      <div className="flex h-screen flex-col items-center justify-center bg-white font-inter">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-            <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left lg:flex lg:items-center">
+            <div className="sm:text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:flex lg:items-center lg:text-left">
               <div>
-                <Link className="inline-flex px-1 py-1 gap-x-2 rounded-xl  border-gray-400 border-2 hover:border-orange-500 items-center text-sm font-semibold text-gray-600 space-x-1" href="#">
-                  <span className="bg-orange-100 flex items-center justify-center gap-2 text-orange-800 text-sm font-semibold px-2.5 py-0.5 rounded-lg ">
-                    <Volume1 color='#FF7000' />
+                <Link
+                  className="inline-flex items-center gap-x-2 space-x-1 rounded-xl  border-2 border-gray-400 p-1 text-sm font-semibold text-gray-600 hover:border-orange-500"
+                  href="#"
+                >
+                  <span className="flex items-center justify-center gap-2 rounded-lg bg-orange-100 px-2.5 py-0.5 text-sm font-semibold text-orange-800 ">
+                    <Volume1 color="#FF7000" />
                     Welcome
                   </span>
-                  <span >Ask your first doubt</span>
-                  {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg> */}
+                  <span>Ask your first doubt</span>
                 </Link>
-                <h1 className="mt-4 text-3xl tracking-tight font-extrabold sm:mt-5 sm:leading-none lg:mt-6 lg:text-6xl xl:text-7xl">
-                  <p className="sm:block ">Here is your
-                    <span className=' text-gray-400'>
-
-                      &nbsp; doubt-solver,
-                    </span>
-
+                <h1 className="mt-4 text-3xl font-extrabold tracking-wide  sm:mt-5 sm:leading-none lg:mt-6 lg:text-6xl lg:leading-relaxed xl:text-7xl">
+                  <p className="sm:block ">
+                    Here is your
+                    <span className=" text-gray-400">&nbsp; doubt-solver,</span>
                   </p>
-                  <span className="text-dark-500 md:block">new, all-in-one</span>
+                  <span className="text-dark-500 md:block">
+                    new, all-in-one
+                  </span>
                   <p className="text-orange-600 md:block">platform</p>
                 </h1>
-                <div className="mt-10 sm:flex sm:justify-center gap-4 lg:justify-start">
-                  <Link href="/question-dashboard" className="inline-flex items-center hover:bg-white hover:border-2 hover:border-primary-500 hover:text-primary-500 text-white bg-primary-500 justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full sm:w-auto">
-                    View as guest
-                  </Link>
-                  <Link href="/question-dashboard" className="inline-flex items-center hover:bg-primary-500 hover:text-white bg-white text-primary-500 border-primary-500 border-2 justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full sm:w-auto">
-                    Login
-                  </Link>
+                <div className="mt-10 gap-4 sm:flex sm:justify-center lg:justify-start">
+                  <SignedOut>
+                    <div className="flex flex-row gap-3">
+                      <Link href="/sign-in">
+                        <Button className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
+                          <Image
+                            src="/assets/icons/account.svg"
+                            alt="login"
+                            width={20}
+                            height={20}
+                            className="invert-colors lg:hidden"
+                          />
+                          <span className="primary-text-gradient max-lg:hidden">
+                            Log In
+                          </span>
+                        </Button>
+                      </Link>
+
+                      <Link href="/sign-up">
+                        <Button className="small-medium light-border-2 btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg border px-4 py-3 shadow-none">
+                          <Image
+                            src="/assets/icons/sign-up.svg"
+                            alt="sign up"
+                            width={20}
+                            height={20}
+                            className="invert-colors lg:hidden"
+                          />
+                          <span className="max-lg:hidden">Sign up</span>
+                        </Button>
+                      </Link>
+                    </div>
+                  </SignedOut>
+                  <SignedIn>
+                    <Link href="/question-dashboard">
+                      <Button className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
+                        <Image
+                          src="/assets/icons/account.svg"
+                          alt="login"
+                          width={20}
+                          height={20}
+                          className="invert-colors lg:hidden"
+                        />
+                        <span className="primary-text-gradient max-lg:hidden">
+                          Go to Dashboard
+                        </span>
+                      </Button>
+                    </Link>
+                  </SignedIn>
                 </div>
               </div>
             </div>
-            <div className="mt-16 ml-6 sm:mt-24 lg:mt-0 lg:col-span-5">
-              <p className="text-base ml-12 text-gray-600 sm:text-xl lg:text-lg xl:text-xl">
-                Navigate the world of software development with ease, connecting with peers and accessing a wealth of resources.
+            <div className="ml-6 mt-16 sm:mt-24 lg:col-span-5 lg:mt-0">
+              <p className="ml-12 text-base text-gray-600 sm:text-xl lg:text-lg xl:text-xl">
+                Navigate the world of software development with ease, connecting
+                with peers and accessing a wealth of resources.
               </p>
-              <div className="mt-12 ml-8">
+              <div className="ml-8 mt-12">
                 <div className="grid grid-cols-3 gap-6 sm:gap-6 xl:gap-8">
                   <div className="text-center sm:flex sm:items-center sm:justify-center">
-                    <div className="sm:flex-shrink-0">
+                    <div className="sm:shrink-0">
                       <div className="flow-root">
-                        <div
-                          className="border w-fit transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 inline-flex items-center justify-center px-3 py-0.5 text-sm font-medium leading-5 text-orange-600 bg-orange-100 rounded-full">
+                        <div className="  inline-flex w-fit items-center justify-center rounded-full border border-transparent bg-orange-100 px-3 py-0.5 text-sm font-medium leading-5 text-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2">
                           Developers
                         </div>
                         <p className="text-4xl font-bold text-gray-900">16K+</p>
                       </div>
                     </div>
-
                   </div>
                   <div className="text-center sm:flex sm:items-center sm:justify-center">
-                    <div className="sm:flex-shrink-0">
+                    <div className="sm:shrink-0">
                       <div className="flow-root">
-                        <div
-                          className="border w-fit transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 inline-flex items-center justify-center px-3 py-0.5 text-sm font-medium leading-5 text-orange-600 bg-orange-100 rounded-full">
+                        <div className="  inline-flex w-fit items-center justify-center rounded-full border border-transparent bg-orange-100 px-3 py-0.5 text-sm font-medium leading-5 text-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2">
                           Questions
                         </div>
-                        <p className="text-4xl font-bold ml-4 text-gray-900">28K+</p>
+                        <p className="ml-4 text-4xl font-bold text-gray-900">
+                          28K+
+                        </p>
                       </div>
                     </div>
-
                   </div>
                   <div className="text-center sm:flex sm:items-center sm:justify-center">
-                    <div className="sm:flex-shrink-0">
+                    <div className="sm:shrink-0">
                       <div className="flow-root">
-                        <div
-                          className="border w-fit transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 inline-flex items-center justify-center px-3 py-0.5 text-sm font-medium leading-5 text-orange-600 bg-orange-100 rounded-full">
+                        <div className="  inline-flex w-fit items-center justify-center rounded-full border border-transparent bg-orange-100 px-3 py-0.5 text-sm font-medium leading-5 text-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2">
                           Topics
                         </div>
-                        <p className="text-4xl font-bold ml-4 text-gray-900">18+</p>
+                        <p className="ml-4 text-4xl font-bold text-gray-900">
+                          18+
+                        </p>
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -94,24 +154,47 @@ const HeroSection = () => {
                 <div className="mt-12 flex justify-center space-x-3">
                   <span className="relative flex h-14 w-14 shrink-0 overflow-hidden rounded-full">
                     <Image
-                      className="aspect-square h-full w-full" alt="User 1"
+                      className="aspect-square h-full w-full"
+                      alt="User 1"
                       width={20}
                       height={20}
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;width=40" />
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;width=40"
+                    />
                   </span>
-                  <span
-                    className="relative flex h-14 w-14 shrink-0 overflow-hidden rounded-full"><img
-                      className="aspect-square h-full w-full" alt="User 2"
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;width=40" /></span><span
-                        className="relative flex h-14 w-14 shrink-0 overflow-hidden rounded-full"><img
-                      className="aspect-square h-full w-full" alt="User 3"
-                      src="https://images.unsplash.com/photo-1548142813-c348350df52b?q=80&w=1889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;width=40" /></span><span
-                        className="relative flex h-14 w-14 shrink-0 overflow-hidden rounded-full"><img
-                      className="aspect-square h-full w-full" alt="User 4"
-                      src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=1889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;width=40" /></span>
-                  <img className="relative flex h-14 w-14 shrink-0 overflow-hidden rounded-full"
+                  <span className="relative flex h-14 w-14 shrink-0 overflow-hidden rounded-full">
+                    <Image
+                      className="aspect-square h-full w-full"
+                      alt="User 2"
+                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;width=40"
+                      width={100}
+                      height={100}
+                    />
+                  </span>
+                  <span className="relative flex h-14 w-14 shrink-0 overflow-hidden rounded-full">
+                    <Image
+                      className="aspect-square h-full w-full"
+                      alt="User 3"
+                      src="https://images.unsplash.com/photo-1548142813-c348350df52b?q=80&w=1889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;width=40"
+                      width={100}
+                      height={100}
+                    />
+                  </span>
+                  <span className="relative flex h-14 w-14 shrink-0 overflow-hidden rounded-full">
+                    <Image
+                      className="aspect-square h-full w-full"
+                      alt="User 4"
+                      src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=1889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;width=40"
+                      width={100}
+                      height={100}
+                    />
+                  </span>
+                  <Image
+                    className="relative flex h-14 w-14 shrink-0 overflow-hidden rounded-full"
                     src="https://images.unsplash.com/photo-1527718641255-324f8e2d0421?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="5" />
+                    alt="5"
+                    width={100}
+                    height={100}
+                  />
                 </div>
               </div>
             </div>
