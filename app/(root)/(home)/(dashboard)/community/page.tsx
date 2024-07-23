@@ -1,23 +1,23 @@
-import UserCard from '@/components/cards/UserCard'
-import Filter from '@/components/shared/Filter'
-import Pagination from '@/components/shared/Pagination'
-import LocalSearchbar from '@/components/shared/search/LocalSearchbar'
-import { UserFilters } from '@/constants/filters'
-import { getAllUsers } from '@/lib/actions/user.action'
-import { SearchParamsProps } from '@/types'
-import Link from 'next/link'
-import type { Metadata } from 'next';
+import UserCard from "@/components/cards/UserCard";
+import Filter from "@/components/shared/Filter";
+import Pagination from "@/components/shared/Pagination";
+import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
+import { UserFilters } from "@/constants/filters";
+import { getAllUsers } from "@/lib/actions/user.action";
+import { SearchParamsProps } from "@/types";
+import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: 'Community | Dev Overflow',
-}
+  title: "Community | Dev Discuss",
+};
 
 const Page = async ({ searchParams }: SearchParamsProps) => {
   const result = await getAllUsers({
     searchQuery: searchParams.q,
     filter: searchParams.filter,
     page: searchParams.page ? +searchParams.page : 1,
-  })
+  });
 
   return (
     <>
@@ -38,11 +38,9 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
         />
       </div>
 
-      <section className="mt-12 grid xl:grid-cols-3 2xl:grid-cols-4 lg:gap-2 2xl:gap-4  ">
+      <section className="mt-12 grid lg:gap-2 xl:grid-cols-3 2xl:grid-cols-4 2xl:gap-4  ">
         {result.users.length > 0 ? (
-          result.users.map((user) => (
-            <UserCard key={user._id} user={user} />
-          ))
+          result.users.map((user) => <UserCard key={user._id} user={user} />)
         ) : (
           <div className="paragraph-regular text-dark200_light800 mx-auto max-w-4xl text-center">
             <p>No users yet</p>
@@ -60,7 +58,7 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
         />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
