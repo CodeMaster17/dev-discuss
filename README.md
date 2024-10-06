@@ -20,6 +20,7 @@
 📝 View user questions <br/>
 📝 View user answers <br/>
 📝 View user upvotes <br/>
+💁🏻‍♀️ Follow/ Unfollow people <br/>
 
 Dark Mode
 ![DevDiscuss](https://github.com/CodeMaster17/dev-discuss/assets/96763776/72dc6521-8285-4d07-8b42-84c25d34b547)
