@@ -15,11 +15,11 @@
 𐄳 Filter questions by topic <br/>
 🫵🏻 View user profiles <br/>
 ⚡️ View user activity <br/>
-📝 View user stats <br/>
-📝 View user badges <br/>
-📝 View user questions <br/>
+🔢 View user stats <br/>
+🎯 View user badges <br/>
+︖ View user questions <br/>
 📝 View user answers <br/>
-📝 View user upvotes <br/>
+🔼 View user upvotes <br/>
 💁🏻‍♀️ Follow/ Unfollow people <br/>
 
 Dark Mode
