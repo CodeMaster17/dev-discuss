@@ -51,10 +51,10 @@ export default async function QuestionDashboard({
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
-        <h1 className="h1-bold text-dark100_light900">All Questions</h1>
+        <h1 className="h2-bold text-dark100_light900">All Questions</h1>
 
         <Link href="/ask-question" className="flex justify-end max-sm:w-full">
-          <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
+          <Button className="primary-gradient min-h-[36px] px-4 py-3 !text-light-900">
             Ask a Question
           </Button>
         </Link>
@@ -71,7 +71,7 @@ export default async function QuestionDashboard({
 
         <Filter
           filters={HomePageFilters}
-          otherClasses="min-h-[56px] sm:min-w-[170px]"
+          otherClasses="min-h-[25px] sm:min-w-[170px]"
           containerClasses="hidden max-md:flex"
         />
       </div>
